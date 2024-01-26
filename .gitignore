@@ -2,9 +2,6 @@
 .yalc
 yalc.lock
 .nyc_output
-node_modules
-coverage
 *.log
 yarn.lock
 .env
-cache/
