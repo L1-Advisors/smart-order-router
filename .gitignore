@@ -3,11 +3,8 @@
 yalc.lock
 .nyc_output
 node_modules
-src/**.js
 coverage
 *.log
 yarn.lock
-types
-types/*
 .env
 cache/
