@@ -188,12 +188,6 @@ export const WETH9: {
     'WETH',
     'Wrapped Ether'
   ),
-  [ChainId.OPTIMISM_SEPOLIA]: new Token(ChainId.OPTIMISM_SEPOLIA,
-    '0x4200000000000000000000000000000000000006',
-    18,
-    'WETH',
-    'Wrapped Ether'
-  ),
 };
 
 export const BEACON_CHAIN_DEPOSIT_ADDRESS =
