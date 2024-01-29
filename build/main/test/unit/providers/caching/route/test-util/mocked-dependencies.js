@@ -1,0 +1,32 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getCachedRoutesStub = exports.getMixedRouteWithValidQuoteStub = exports.getV3RouteWithValidQuoteStub = exports.getV2RouteWithValidQuoteStub = void 0;
+const bignumber_1 = require("@ethersproject/bignumber");
+const router_sdk_1 = require("@uniswap/router-sdk");
+const sdk_core_1 = require("@uniswap/sdk-core");
+const main_1 = require("../../../../../../build/main");
+const src_1 = require("../../../../../../src");
+const mock_data_1 = require("../../../../../test-util/mock-data");
+const mocked_dependencies_1 = require("../../../../routers/alpha-router/gas-models/test-util/mocked-dependencies");
+function getV2RouteWithValidQuoteStub(overrides) {
+    const route = new src_1.V2Route([mock_data_1.USDC_DAI], main_1.USDC_MAINNET, main_1.DAI_MAINNET);
+    return new src_1.V2RouteWithValidQuote(Object.assign({ amount: src_1.CurrencyAmount.fromRawAmount(src_1.USDC_MAINNET, 100), rawQuote: bignumber_1.BigNumber.from(100), percent: 100, route, gasModel: (0, mocked_dependencies_1.getMockedV2GasModel)(), quoteToken: src_1.DAI_MAINNET, tradeType: sdk_core_1.TradeType.EXACT_INPUT, v2PoolProvider: (0, mocked_dependencies_1.getMockedV2PoolProvider)() }, overrides));
+}
+exports.getV2RouteWithValidQuoteStub = getV2RouteWithValidQuoteStub;
+function getV3RouteWithValidQuoteStub(overrides) {
+    const route = new main_1.V3Route([mock_data_1.USDC_DAI_MEDIUM], main_1.USDC_MAINNET, main_1.DAI_MAINNET);
+    return new main_1.V3RouteWithValidQuote(Object.assign({ amount: src_1.CurrencyAmount.fromRawAmount(src_1.USDC_MAINNET, 100), rawQuote: bignumber_1.BigNumber.from(100), sqrtPriceX96AfterList: [bignumber_1.BigNumber.from(1)], initializedTicksCrossedList: [1], quoterGasEstimate: bignumber_1.BigNumber.from(100000), percent: 100, route, gasModel: (0, mocked_dependencies_1.getMockedV3GasModel)(), quoteToken: src_1.DAI_MAINNET, tradeType: sdk_core_1.TradeType.EXACT_INPUT, v3PoolProvider: (0, mocked_dependencies_1.getMockedV3PoolProvider)() }, overrides));
+}
+exports.getV3RouteWithValidQuoteStub = getV3RouteWithValidQuoteStub;
+function getMixedRouteWithValidQuoteStub(overrides) {
+    const route = new src_1.MixedRoute(
+    // v3 USDC -> WETH , v2 WETH -> DAI
+    [mock_data_1.USDC_WETH_MEDIUM, mock_data_1.WETH_DAI], main_1.USDC_MAINNET, main_1.DAI_MAINNET);
+    return new src_1.MixedRouteWithValidQuote(Object.assign({ amount: src_1.CurrencyAmount.fromRawAmount(src_1.USDC_MAINNET, 100), rawQuote: bignumber_1.BigNumber.from(100), sqrtPriceX96AfterList: [bignumber_1.BigNumber.from(1)], initializedTicksCrossedList: [1], quoterGasEstimate: bignumber_1.BigNumber.from(100000), percent: 100, route, mixedRouteGasModel: (0, mocked_dependencies_1.getMockedMixedGasModel)(), quoteToken: src_1.DAI_MAINNET, tradeType: sdk_core_1.TradeType.EXACT_INPUT, v3PoolProvider: (0, mocked_dependencies_1.getMockedV3PoolProvider)(), v2PoolProvider: (0, mocked_dependencies_1.getMockedV2PoolProvider)() }, overrides));
+}
+exports.getMixedRouteWithValidQuoteStub = getMixedRouteWithValidQuoteStub;
+function getCachedRoutesStub(blockNumber) {
+    return src_1.CachedRoutes.fromRoutesWithValidQuotes([getV3RouteWithValidQuoteStub()], sdk_core_1.ChainId.MAINNET, src_1.USDC_MAINNET, src_1.DAI_MAINNET, [router_sdk_1.Protocol.V2, router_sdk_1.Protocol.V3, router_sdk_1.Protocol.MIXED], blockNumber, sdk_core_1.TradeType.EXACT_INPUT, '1.1');
+}
+exports.getCachedRoutesStub = getCachedRoutesStub;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibW9ja2VkLWRlcGVuZGVuY2llcy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uLy4uL3Rlc3QvdW5pdC9wcm92aWRlcnMvY2FjaGluZy9yb3V0ZS90ZXN0LXV0aWwvbW9ja2VkLWRlcGVuZGVuY2llcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFBQSx3REFBcUQ7QUFDckQsb0RBQStDO0FBQy9DLGdEQUF1RDtBQUN2RCx1REFLc0M7QUFDdEMsK0NBWStCO0FBQy9CLGtFQUs0QztBQUM1QyxtSEFNbUY7QUFFbkYsU0FBZ0IsNEJBQTRCLENBQzFDLFNBQWdEO0lBRWhELE1BQU0sS0FBSyxHQUFHLElBQUksYUFBTyxDQUFDLENBQUMsb0JBQVEsQ0FBQyxFQUFFLG1CQUFZLEVBQUUsa0JBQVcsQ0FBQyxDQUFDO0lBRWpFLE9BQU8sSUFBSSwyQkFBcUIsaUJBQzlCLE1BQU0sRUFBRSxvQkFBYyxDQUFDLGFBQWEsQ0FBQyxrQkFBSSxFQUFFLEdBQUcsQ0FBQyxFQUMvQyxRQUFRLEVBQUUscUJBQVMsQ0FBQyxJQUFJLENBQUMsR0FBRyxDQUFDLEVBQzdCLE9BQU8sRUFBRSxHQUFHLEVBQ1osS0FBSyxFQUNMLFFBQVEsRUFBRSxJQUFBLHlDQUFtQixHQUFFLEVBQy9CLFVBQVUsRUFBRSxpQkFBRyxFQUNmLFNBQVMsRUFBRSxvQkFBUyxDQUFDLFdBQVcsRUFDaEMsY0FBYyxFQUFFLElBQUEsNkNBQXVCLEdBQUUsSUFDdEMsU0FBUyxFQUNaLENBQUM7QUFDTCxDQUFDO0FBaEJELG9FQWdCQztBQUVELFNBQWdCLDRCQUE0QixDQUMxQyxTQUFnRDtJQUVoRCxNQUFNLEtBQUssR0FBRyxJQUFJLGNBQU8sQ0FBQyxDQUFDLDJCQUFlLENBQUMsRUFBRSxtQkFBWSxFQUFFLGtCQUFXLENBQUMsQ0FBQztJQUV4RSxPQUFPLElBQUksNEJBQXFCLGlCQUM5QixNQUFNLEVBQUUsb0JBQWMsQ0FBQyxhQUFhLENBQUMsa0JBQUksRUFBRSxHQUFHLENBQUMsRUFDL0MsUUFBUSxFQUFFLHFCQUFTLENBQUMsSUFBSSxDQUFDLEdBQUcsQ0FBQyxFQUM3QixxQkFBcUIsRUFBRSxDQUFDLHFCQUFTLENBQUMsSUFBSSxDQUFDLENBQUMsQ0FBQyxDQUFDLEVBQzFDLDJCQUEyQixFQUFFLENBQUMsQ0FBQyxDQUFDLEVBQ2hDLGlCQUFpQixFQUFFLHFCQUFTLENBQUMsSUFBSSxDQUFDLE1BQU0sQ0FBQyxFQUN6QyxPQUFPLEVBQUUsR0FBRyxFQUNaLEtBQUssRUFDTCxRQUFRLEVBQUUsSUFBQSx5Q0FBbUIsR0FBRSxFQUMvQixVQUFVLEVBQUUsaUJBQUcsRUFDZixTQUFTLEVBQUUsb0JBQVMsQ0FBQyxXQUFXLEVBQ2hDLGNBQWMsRUFBRSxJQUFBLDZDQUF1QixHQUFFLElBQ3RDLFNBQVMsRUFDWixDQUFDO0FBQ0wsQ0FBQztBQW5CRCxvRUFtQkM7QUFFRCxTQUFnQiwrQkFBK0IsQ0FDN0MsU0FBbUQ7SUFFbkQsTUFBTSxLQUFLLEdBQUcsSUFBSSxnQkFBVTtJQUMxQixtQ0FBbUM7SUFDbkMsQ0FBQyw0QkFBZ0IsRUFBRSxvQkFBUSxDQUFDLEVBQzVCLG1CQUFZLEVBQ1osa0JBQVcsQ0FDWixDQUFDO0lBRUYsT0FBTyxJQUFJLDhCQUF3QixpQkFDakMsTUFBTSxFQUFFLG9CQUFjLENBQUMsYUFBYSxDQUFDLGtCQUFJLEVBQUUsR0FBRyxDQUFDLEVBQy9DLFFBQVEsRUFBRSxxQkFBUyxDQUFDLElBQUksQ0FBQyxHQUFHLENBQUMsRUFDN0IscUJBQXFCLEVBQUUsQ0FBQyxxQkFBUyxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsQ0FBQyxFQUMxQywyQkFBMkIsRUFBRSxDQUFDLENBQUMsQ0FBQyxFQUNoQyxpQkFBaUIsRUFBRSxxQkFBUyxDQUFDLElBQUksQ0FBQyxNQUFNLENBQUMsRUFDekMsT0FBTyxFQUFFLEdBQUcsRUFDWixLQUFLLEVBQ0wsa0JBQWtCLEVBQUUsSUFBQSw0Q0FBc0IsR0FBRSxFQUM1QyxVQUFVLEVBQUUsaUJBQUcsRUFDZixTQUFTLEVBQUUsb0JBQVMsQ0FBQyxXQUFXLEVBQ2hDLGNBQWMsRUFBRSxJQUFBLDZDQUF1QixHQUFFLEVBQ3pDLGNBQWMsRUFBRSxJQUFBLDZDQUF1QixHQUFFLElBQ3RDLFNBQVMsRUFDWixDQUFDO0FBQ0wsQ0FBQztBQXpCRCwwRUF5QkM7QUFFRCxTQUFnQixtQkFBbUIsQ0FDakMsV0FBbUI7SUFFbkIsT0FBTyxrQkFBWSxDQUFDLHlCQUF5QixDQUMzQyxDQUFDLDRCQUE0QixFQUFFLENBQUMsRUFDaEMsa0JBQU8sQ0FBQyxPQUFPLEVBQ2Ysa0JBQUksRUFDSixpQkFBRyxFQUNILENBQUMscUJBQVEsQ0FBQyxFQUFFLEVBQUUscUJBQVEsQ0FBQyxFQUFFLEVBQUUscUJBQVEsQ0FBQyxLQUFLLENBQUMsRUFDMUMsV0FBVyxFQUNYLG9CQUFTLENBQUMsV0FBVyxFQUNyQixLQUFLLENBQ04sQ0FBQztBQUNKLENBQUM7QUFiRCxrREFhQyJ9

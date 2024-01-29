@@ -1,0 +1,43 @@
+import { BigNumber } from '@ethersproject/bignumber';
+import { Command, flags } from '@oclif/command';
+import { Currency, CurrencyAmount } from '@uniswap/sdk-core';
+import { MethodParameters } from '@uniswap/v3-sdk';
+import bunyan from 'bunyan';
+import { IRouter, ISwapToRatio, ITokenProvider, IV3PoolProvider, RouteWithValidQuote, SimulationStatus, UniswapMulticallProvider } from '../src';
+export declare abstract class BaseCommand extends Command {
+    static flags: {
+        topN: import("@oclif/parser/lib/flags").IOptionFlag<number>;
+        topNTokenInOut: import("@oclif/parser/lib/flags").IOptionFlag<number>;
+        topNSecondHop: import("@oclif/parser/lib/flags").IOptionFlag<number>;
+        topNSecondHopForTokenAddressRaw: flags.IOptionFlag<string>;
+        topNWithEachBaseToken: import("@oclif/parser/lib/flags").IOptionFlag<number>;
+        topNWithBaseToken: import("@oclif/parser/lib/flags").IOptionFlag<number>;
+        topNWithBaseTokenInSet: import("@oclif/parser/lib/flags").IBooleanFlag<boolean>;
+        topNDirectSwaps: import("@oclif/parser/lib/flags").IOptionFlag<number>;
+        maxSwapsPerPath: import("@oclif/parser/lib/flags").IOptionFlag<number>;
+        minSplits: import("@oclif/parser/lib/flags").IOptionFlag<number>;
+        maxSplits: import("@oclif/parser/lib/flags").IOptionFlag<number>;
+        distributionPercent: import("@oclif/parser/lib/flags").IOptionFlag<number>;
+        chainId: import("@oclif/parser/lib/flags").IOptionFlag<number>;
+        tokenListURI: flags.IOptionFlag<string | undefined>;
+        router: flags.IOptionFlag<string>;
+        debug: import("@oclif/parser/lib/flags").IBooleanFlag<boolean>;
+        debugJSON: import("@oclif/parser/lib/flags").IBooleanFlag<boolean>;
+    };
+    private _log;
+    private _router;
+    private _swapToRatioRouter;
+    private _tokenProvider;
+    private _poolProvider;
+    private _blockNumber;
+    private _multicall2Provider;
+    get logger(): bunyan;
+    get router(): IRouter<any>;
+    get swapToRatioRouter(): ISwapToRatio<any, any>;
+    get tokenProvider(): ITokenProvider;
+    get poolProvider(): IV3PoolProvider;
+    get blockNumber(): number;
+    get multicall2Provider(): UniswapMulticallProvider;
+    init(): Promise<void>;
+    logSwapResults(routeAmounts: RouteWithValidQuote[], quote: CurrencyAmount<Currency>, quoteGasAdjusted: CurrencyAmount<Currency>, estimatedGasUsedQuoteToken: CurrencyAmount<Currency>, estimatedGasUsedUSD: CurrencyAmount<Currency>, estimatedGasUsedGasToken: CurrencyAmount<Currency> | undefined, methodParameters: MethodParameters | undefined, blockNumber: BigNumber, estimatedGasUsed: BigNumber, gasPriceWei: BigNumber, simulationStatus?: SimulationStatus): void;
+}
