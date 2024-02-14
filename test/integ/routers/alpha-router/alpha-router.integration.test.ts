@@ -13,6 +13,7 @@ import {
   Fraction,
   Percent,
   Rounding,
+  SWAP_ROUTER_02_ADDRESSES,
   Token,
   TradeType
 } from '@uniswap/sdk-core';
@@ -56,7 +57,6 @@ import {
   SimulationStatus,
   StaticGasPriceProvider,
   SUPPORTED_CHAINS,
-  SWAP_ROUTER_02_ADDRESSES,
   SwapOptions,
   SwapType,
   TenderlySimulator,
@@ -98,14 +98,16 @@ const LARGE_SLIPPAGE = new Percent(45, 100); // 5% or 10_000?
 
 // Those are the worst deviation (we intend to keep them low and strict) tested manually with FORK_BLOCK = 18222746
 // We may need to tune them if we change the FORK_BLOCK
-const GAS_ESTIMATE_DEVIATION_PERCENT: { [chainId in ChainId]: number }  = {
+const GAS_ESTIMATE_DEVIATION_PERCENT: { [chainId in ChainId]: number } = {
   [ChainId.MAINNET]: 35,
   [ChainId.GOERLI]: 62,
   [ChainId.SEPOLIA]: 50,
   [ChainId.OPTIMISM]: 26,
   [ChainId.OPTIMISM_GOERLI]: 30,
+  [ChainId.OPTIMISM_SEPOLIA]: 30,
   [ChainId.ARBITRUM_ONE]: 53,
   [ChainId.ARBITRUM_GOERLI]: 50,
+  [ChainId.ARBITRUM_SEPOLIA]: 50,
   [ChainId.POLYGON]: 34,
   [ChainId.POLYGON_MUMBAI]: 30,
   [ChainId.CELO]: 30,
@@ -3285,6 +3287,8 @@ describe('quote for other networks', () => {
     [ChainId.AVALANCHE]: () => USDC_ON(ChainId.AVALANCHE),
     [ChainId.BASE]: () => USDC_ON(ChainId.BASE),
     [ChainId.BASE_GOERLI]: () => USDC_ON(ChainId.BASE_GOERLI),
+    [ChainId.OPTIMISM_SEPOLIA]: () => USDC_ON(ChainId.OPTIMISM_SEPOLIA),
+    [ChainId.ARBITRUM_SEPOLIA]: () => USDC_ON(ChainId.ARBITRUM_SEPOLIA),
   };
   const TEST_ERC20_2: { [chainId in ChainId]: () => Token } = {
     [ChainId.MAINNET]: () => DAI_ON(1),
@@ -3304,6 +3308,8 @@ describe('quote for other networks', () => {
     [ChainId.AVALANCHE]: () => DAI_ON(ChainId.AVALANCHE),
     [ChainId.BASE]: () => WNATIVE_ON(ChainId.BASE),
     [ChainId.BASE_GOERLI]: () => WNATIVE_ON(ChainId.BASE_GOERLI),
+    [ChainId.OPTIMISM_SEPOLIA]: () => WNATIVE_ON(ChainId.OPTIMISM_SEPOLIA),
+    [ChainId.ARBITRUM_SEPOLIA]: () => WNATIVE_ON(ChainId.ARBITRUM_SEPOLIA),
   };
 
   // TODO: Find valid pools/tokens on optimistic kovan and polygon mumbai. We skip those tests for now.

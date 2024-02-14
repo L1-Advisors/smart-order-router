@@ -19,10 +19,14 @@ export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
     CHAIN_TO_ADDRESSES_MAP[ChainId.CELO_ALFAJORES].v3CoreFactoryAddress,
   [ChainId.OPTIMISM_GOERLI]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.OPTIMISM_GOERLI].v3CoreFactoryAddress,
+  [ChainId.OPTIMISM_SEPOLIA]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.OPTIMISM_SEPOLIA].v3CoreFactoryAddress,
   [ChainId.SEPOLIA]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.SEPOLIA].v3CoreFactoryAddress,
   [ChainId.ARBITRUM_GOERLI]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.ARBITRUM_GOERLI].v3CoreFactoryAddress,
+  [ChainId.ARBITRUM_SEPOLIA]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.ARBITRUM_SEPOLIA].v3CoreFactoryAddress,
   [ChainId.BNB]: CHAIN_TO_ADDRESSES_MAP[ChainId.BNB].v3CoreFactoryAddress,
   [ChainId.AVALANCHE]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.AVALANCHE].v3CoreFactoryAddress,
@@ -39,9 +43,13 @@ export const QUOTER_V2_ADDRESSES: AddressMap = {
     CHAIN_TO_ADDRESSES_MAP[ChainId.CELO_ALFAJORES].quoterAddress,
   [ChainId.OPTIMISM_GOERLI]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.OPTIMISM_GOERLI].quoterAddress,
+  [ChainId.OPTIMISM_SEPOLIA]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.OPTIMISM_SEPOLIA].quoterAddress,
   [ChainId.SEPOLIA]: CHAIN_TO_ADDRESSES_MAP[ChainId.SEPOLIA].quoterAddress,
   [ChainId.ARBITRUM_GOERLI]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.ARBITRUM_GOERLI].quoterAddress,
+  [ChainId.ARBITRUM_SEPOLIA]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.ARBITRUM_SEPOLIA].quoterAddress,
   [ChainId.BNB]: CHAIN_TO_ADDRESSES_MAP[ChainId.BNB].quoterAddress,
   [ChainId.AVALANCHE]: CHAIN_TO_ADDRESSES_MAP[ChainId.AVALANCHE].quoterAddress,
   [ChainId.BASE_GOERLI]:
@@ -64,9 +72,13 @@ export const UNISWAP_MULTICALL_ADDRESSES: AddressMap = {
     CHAIN_TO_ADDRESSES_MAP[ChainId.CELO_ALFAJORES].multicallAddress,
   [ChainId.OPTIMISM_GOERLI]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.OPTIMISM_GOERLI].multicallAddress,
+  [ChainId.OPTIMISM_SEPOLIA]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.OPTIMISM_SEPOLIA].multicallAddress,
   [ChainId.SEPOLIA]: CHAIN_TO_ADDRESSES_MAP[ChainId.SEPOLIA].multicallAddress,
   [ChainId.ARBITRUM_GOERLI]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.ARBITRUM_GOERLI].multicallAddress,
+  [ChainId.ARBITRUM_SEPOLIA]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.ARBITRUM_SEPOLIA].multicallAddress,
   [ChainId.BNB]: CHAIN_TO_ADDRESSES_MAP[ChainId.BNB].multicallAddress,
   [ChainId.AVALANCHE]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.AVALANCHE].multicallAddress,
@@ -74,19 +86,6 @@ export const UNISWAP_MULTICALL_ADDRESSES: AddressMap = {
     CHAIN_TO_ADDRESSES_MAP[ChainId.BASE_GOERLI].multicallAddress,
   [ChainId.BASE]: CHAIN_TO_ADDRESSES_MAP[ChainId.BASE].multicallAddress,
   // TODO: Gnosis + Moonbeam contracts to be deployed
-};
-
-export const SWAP_ROUTER_02_ADDRESSES = (chainId: number): string => {
-  switch (chainId) {
-    case ChainId.BNB:
-      return BNB_SWAP_ROUTER_02_ADDRESS;
-    case ChainId.BASE:
-      return CHAIN_TO_ADDRESSES_MAP[ChainId.BASE].swapRouter02Address!;
-    case ChainId.AVALANCHE:
-      return CHAIN_TO_ADDRESSES_MAP[ChainId.AVALANCHE].swapRouter02Address!;
-    default:
-      return '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45';
-  }
 };
 
 export const OVM_GASPRICE_ADDRESS =
@@ -181,6 +180,13 @@ export const WETH9: {
   [ChainId.ARBITRUM_GOERLI]: new Token(
     ChainId.ARBITRUM_GOERLI,
     '0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3',
+    18,
+    'WETH',
+    'Wrapped Ether'
+  ),
+  [ChainId.ARBITRUM_SEPOLIA]: new Token(
+    ChainId.ARBITRUM_SEPOLIA,
+    '0x980B62Da83eFf3D4576C647993b0c1D7faf17c73',
     18,
     'WETH',
     'Wrapped Ether'

@@ -182,6 +182,13 @@ export const OP_OPTIMISM = new Token(
   'Optimism'
 );
 
+export const USDC_OPTIMISM_SEPOLIA = new Token(
+  ChainId.OPTIMISM_SEPOLIA,
+  '0x5fd84259d66Cd46123540766Be93DFE6D43130D7',
+  6,
+  'USDC',
+  'USD//C'
+);
 export const USDC_OPTIMISM_GOERLI = new Token(
   ChainId.OPTIMISM_GOERLI,
   '0x7E07E15D2a87A24492740D16f5bdF58c16db0c4E',
@@ -260,6 +267,14 @@ export const DAI_ARBITRUM_GOERLI = new Token(
 export const USDC_ARBITRUM_GOERLI = new Token(
   ChainId.ARBITRUM_GOERLI,
   '0x8FB1E3fC51F3b789dED7557E680551d93Ea9d892',
+  6,
+  'USDC',
+  'USD//C'
+);
+
+export const USDC_ARBITRUM_SEPOLIA = new Token(
+  ChainId.ARBITRUM_SEPOLIA,
+  '0x1459F5c7FC539F42ffd0c63A0e4AD000dfF70919',
   6,
   'USDC',
   'USD//C'
@@ -775,10 +790,14 @@ export const USDC_ON = (chainId: ChainId): Token => {
       return USDC_OPTIMISM;
     case ChainId.OPTIMISM_GOERLI:
       return USDC_OPTIMISM_GOERLI;
+    case ChainId.OPTIMISM_SEPOLIA:
+      return USDC_OPTIMISM_SEPOLIA;
     case ChainId.ARBITRUM_ONE:
       return USDC_ARBITRUM;
     case ChainId.ARBITRUM_GOERLI:
       return USDC_ARBITRUM_GOERLI;
+    case ChainId.ARBITRUM_SEPOLIA:
+      return USDC_ARBITRUM_SEPOLIA;
     case ChainId.POLYGON:
       return USDC_POLYGON;
     case ChainId.POLYGON_MUMBAI:
