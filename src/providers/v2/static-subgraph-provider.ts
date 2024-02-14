@@ -74,6 +74,7 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     ARB_ARBITRUM,
   ],
   [ChainId.ARBITRUM_GOERLI]: [],
+  [ChainId.ARBITRUM_SEPOLIA]: [],
   [ChainId.OPTIMISM_GOERLI]: [],
   [ChainId.OPTIMISM_SEPOLIA]: [],
   [ChainId.POLYGON]: [USDC_POLYGON, WETH_POLYGON, WMATIC_POLYGON],
@@ -102,7 +103,7 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     DAI_AVAX,
   ],
   [ChainId.BASE_GOERLI]: [],
-  [ChainId.BASE]: [WRAPPED_NATIVE_CURRENCY[ChainId.BASE], USDC_BASE ]
+  [ChainId.BASE]: [WRAPPED_NATIVE_CURRENCY[ChainId.BASE], USDC_BASE],
 };
 
 /**
