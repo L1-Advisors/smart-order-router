@@ -4,7 +4,6 @@ import { FeeAmount } from '@uniswap/v3-sdk';
 import _ from 'lodash';
 
 import {
-  DAI_OPTIMISM_SEPOLIA,
   ITokenListProvider,
   IV2SubgraphProvider,
   USDC_ARBITRUM_SEPOLIA,
@@ -155,7 +154,6 @@ const baseTokensByChain: { [chainId in ChainId]?: Token[] } = {
     WBTC_OPTIMISM_GOERLI,
   ],
   [ChainId.OPTIMISM_SEPOLIA]: [
-    DAI_OPTIMISM_SEPOLIA,
     USDC_OPTIMISM_SEPOLIA,
     USDT_OPTIMISM_SEPOLIA,
     WBTC_OPTIMISM_SEPOLIA,
