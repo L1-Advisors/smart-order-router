@@ -4,14 +4,9 @@ import { FeeAmount } from '@uniswap/v3-sdk';
 import _ from 'lodash';
 
 import {
-  DAI_OPTIMISM_SEPOLIA,
   ITokenListProvider,
   IV2SubgraphProvider,
-  USDC_ARBITRUM_SEPOLIA,
-  USDC_OPTIMISM_SEPOLIA,
-  USDT_OPTIMISM_SEPOLIA,
   V2SubgraphPool,
-  WBTC_OPTIMISM_SEPOLIA
 } from '../../../providers';
 import {
   CELO,
@@ -154,12 +149,6 @@ const baseTokensByChain: { [chainId in ChainId]?: Token[] } = {
     USDT_OPTIMISM_GOERLI,
     WBTC_OPTIMISM_GOERLI,
   ],
-  [ChainId.OPTIMISM_SEPOLIA]: [
-    DAI_OPTIMISM_SEPOLIA,
-    USDC_OPTIMISM_SEPOLIA,
-    USDT_OPTIMISM_SEPOLIA,
-    WBTC_OPTIMISM_SEPOLIA,
-  ],
   [ChainId.ARBITRUM_ONE]: [
     DAI_ARBITRUM,
     USDC_ARBITRUM,
@@ -167,7 +156,6 @@ const baseTokensByChain: { [chainId in ChainId]?: Token[] } = {
     USDT_ARBITRUM,
   ],
   [ChainId.ARBITRUM_GOERLI]: [USDC_ARBITRUM_GOERLI],
-  [ChainId.ARBITRUM_SEPOLIA]: [USDC_ARBITRUM_SEPOLIA],
   [ChainId.POLYGON]: [USDC_POLYGON, WMATIC_POLYGON],
   [ChainId.POLYGON_MUMBAI]: [DAI_POLYGON_MUMBAI, WMATIC_POLYGON_MUMBAI],
   [ChainId.CELO]: [CUSD_CELO, CEUR_CELO, CELO],
