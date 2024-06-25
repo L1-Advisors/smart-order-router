@@ -50,7 +50,6 @@ export declare const DAI_OPTIMISM_GOERLI: Token;
 export declare const USDC_OPTIMISM_SEPOLIA: Token;
 export declare const USDT_OPTIMISM_SEPOLIA: Token;
 export declare const WBTC_OPTIMISM_SEPOLIA: Token;
-export declare const DAI_OPTIMISM_SEPOLIA: Token;
 export declare const USDC_ARBITRUM: Token;
 export declare const USDC_NATIVE_ARBITRUM: Token;
 export declare const USDT_ARBITRUM: Token;
