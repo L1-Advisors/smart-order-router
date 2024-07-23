@@ -8,7 +8,7 @@ const bignumber_1 = require("@ethersproject/bignumber");
 const router_sdk_1 = require("@uniswap/router-sdk");
 const sdk_core_1 = require("@uniswap/sdk-core");
 const v3_sdk_1 = require("@uniswap/v3-sdk");
-const brotli_compress_1 = __importDefault(require("brotli-compress"));
+const brotli = require('brotli-compress');
 const jsbi_1 = __importDefault(require("jsbi"));
 const lodash_1 = __importDefault(require("lodash"));
 const routers_1 = require("../routers");
@@ -126,7 +126,7 @@ exports.getGasCostInNativeCurrency = getGasCostInNativeCurrency;
 async function getArbitrumBytes(data) {
     if (data == '')
         return bignumber_1.BigNumber.from(0);
-    const compressed = await brotli_compress_1.compress(Buffer.from(data.replace('0x', ''), 'hex'), {
+    const compressed = await brotli.compress(Buffer.from(data.replace('0x', ''), 'hex'), {
         quality: 1,
     });
     // TODO: This is a rough estimate of the compressed size
