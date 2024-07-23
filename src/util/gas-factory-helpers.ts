@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Protocol } from '@uniswap/router-sdk';
 import { ChainId, Percent, Token, TradeType } from '@uniswap/sdk-core';
 import { FeeAmount, Pool } from '@uniswap/v3-sdk';
-import brotli from 'brotli-compress';
+import { compress } from 'brotli-compress';
 import JSBI from 'jsbi';
 import _ from 'lodash';
 
@@ -192,7 +192,7 @@ export function getGasCostInNativeCurrency(
 
 export async function getArbitrumBytes(data: string): Promise<BigNumber> {
   if (data == '') return BigNumber.from(0);
-  const compressed = await brotli.compress(
+  const compressed = await compress(
     Buffer.from(data.replace('0x', ''), 'hex'),
     {
       quality: 1,
