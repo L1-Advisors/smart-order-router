@@ -126,7 +126,7 @@ exports.getGasCostInNativeCurrency = getGasCostInNativeCurrency;
 async function getArbitrumBytes(data) {
     if (data == '')
         return bignumber_1.BigNumber.from(0);
-    const compressed = await brotli_compress_1.default.compress(Buffer.from(data.replace('0x', ''), 'hex'), {
+    const compressed = await brotli_compress_1.compress(Buffer.from(data.replace('0x', ''), 'hex'), {
         quality: 1,
     });
     // TODO: This is a rough estimate of the compressed size
